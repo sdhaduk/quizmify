@@ -34,7 +34,7 @@ const QuizCreation = (props: Props) => {
     defaultValues: {
       amount: 3,
       topic: "",
-      type: "open-ended",
+      type: "open_ended",
     },
   });
 
@@ -108,11 +108,11 @@ const QuizCreation = (props: Props) => {
                 <Button
                   type="button"
                   onClick={() => {
-                    form.setValue("type", "open-ended");
+                    form.setValue("type", "open_ended");
                   }}
                   className="w-1/2 rounded-none rounded-r-lg"
                   variant={
-                    form.getValues("type") === "open-ended"
+                    form.getValues("type") === "open_ended"
                       ? "default"
                       : "secondary"
                   }
