@@ -52,11 +52,6 @@ export const POST = async (req: Request, res: Response) => {
       type,
     });
 
-    console.log(data);
-    console.log(amount);
-    console.log(topic);
-    console.log(type);
-
     if (type == "mcq") {
       let manyData = data.questions.map((question: mcqQuestion) => {
         let options = [
@@ -87,21 +82,14 @@ export const POST = async (req: Request, res: Response) => {
         };
       });
 
-      console.log(manyData);
-
       await prisma.question.createMany({
         data: manyData,
       });
-
-      console.log("hello")
     }
-
-     
 
     return NextResponse.json({
       gameId: game.id,
     });
-    
   } catch (error) {
     if (error instanceof ZodError) {
       return NextResponse.json(
