@@ -52,7 +52,12 @@ export const POST = async (req: Request, res: Response) => {
       type,
     });
 
-    if (type === "mcq") {
+    console.log(data);
+    console.log(amount);
+    console.log(topic);
+    console.log(type);
+
+    if (type == "mcq") {
       let manyData = data.questions.map((question: mcqQuestion) => {
         let options = [
           question.answer,
@@ -73,7 +78,7 @@ export const POST = async (req: Request, res: Response) => {
         data: manyData,
       });
     } else if (type == "open_ended") {
-      let manyData = data.question.map((question: openQuestion) => {
+      let manyData = data.questions.map((question: openQuestion) => {
         return {
           question: question.question,
           answer: question.answer,
@@ -81,13 +86,22 @@ export const POST = async (req: Request, res: Response) => {
           questionType: "open_ended",
         };
       });
+
+      console.log(manyData);
+
       await prisma.question.createMany({
         data: manyData,
       });
+
+      console.log("hello")
     }
+
+     
+
     return NextResponse.json({
       gameId: game.id,
     });
+    
   } catch (error) {
     if (error instanceof ZodError) {
       return NextResponse.json(
@@ -99,7 +113,7 @@ export const POST = async (req: Request, res: Response) => {
     }
     return NextResponse.json(
       {
-        error: "Something went wrong",
+        error: "Something went wrong!!!!!!!!!!!!!",
       },
       {
         status: 500,
