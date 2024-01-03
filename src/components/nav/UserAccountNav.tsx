@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { LogOut } from "lucide-react";
-import UserAvatar from "../UserAvatar";
+import UserAvatar from "./UserAvatar";
 
 type Props = {
   user: Pick<User, "name" | "image" | "email">;

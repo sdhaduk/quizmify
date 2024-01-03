@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import SignInButton from "./SignInButton";
 import UserAccountNav from "./UserAccountNav";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "../general/ThemeToggle";
 
 type Props = {};
 

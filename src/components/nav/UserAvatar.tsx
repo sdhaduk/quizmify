@@ -1,6 +1,6 @@
 import React from "react";
 import { User } from "next-auth";
-import { Avatar, AvatarFallback } from "./ui/avatar";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import Image from "next/image";
 
 type Props = {
