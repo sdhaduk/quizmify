@@ -12,13 +12,13 @@ const ResultsCard = ({ accuracy }: Props) => {
         <Award />
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center h-3/5">
-        {accuracy > 80 ? (
+        {accuracy > 75 ? (
           <>
             <Trophy className="mr-4" stroke="gold" size={50} />
             <div className="flex flex-col text-2xl font-semibold text-yellow-400">
               <span>Impressive!</span>
               <span className="text-sm text-center text-black opacity-50">
-                {"> 80% accuracy"}
+                {"> 75% accuracy"}
               </span>
             </div>
           </>
