@@ -31,7 +31,7 @@ const BlankAnswerInput = ({ answer, setBlankAnswer }: Props) => {
 
   return (
     <div className="flex justify-start w-full mt-4">
-      <h1 className="text-xl font-semibold">{answer}</h1>
+      <h1 className="text-xl font-semibold">
       {answerWithBlanks.split(BLANKS).map((part, index) => {
         return (
           <>
@@ -45,6 +45,7 @@ const BlankAnswerInput = ({ answer, setBlankAnswer }: Props) => {
           </>
         );
       })}
+      </h1>
     </div>
   );
 };
