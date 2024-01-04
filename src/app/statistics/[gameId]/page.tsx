@@ -46,7 +46,7 @@ const StatisticsPage = async ({ params: { gameId } }: Props) => {
       return acc + (question.percentageCorrect || 0);
     }, 0);
 
-    accuracy = totalPercentage * game.questions.length;
+    accuracy = totalPercentage / game.questions.length;
   }
 
   accuracy = Math.round(accuracy * 100) / 100;
