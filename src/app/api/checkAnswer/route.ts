@@ -51,22 +51,22 @@ export const POST = async (req: Request, res: Response) => {
         }
       );
     } else if (question.questionType === "open_ended") {
-      let percentageSimiliar = compareTwoStrings(
+      let percentageSimilar = compareTwoStrings(
         userAnswer.toLowerCase().trim(),
         question.answer.toLowerCase().trim()
       );
-      percentageSimiliar = Math.round(percentageSimiliar * 100);
+      percentageSimilar = Math.round(percentageSimilar * 100);
 
       await prisma.question.update({
         where: { id: questionId },
         data: {
-          percentageCorrect: percentageSimiliar,
+          percentageCorrect: percentageSimilar,
         },
       });
-      
+
       return NextResponse.json(
         {
-          percentageSimiliar,
+          percentageSimilar,
         },
         { status: 200 }
       );
