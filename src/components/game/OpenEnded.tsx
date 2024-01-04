@@ -36,7 +36,7 @@ const OpenEnded = ({ game }: Props) => {
     mutationFn: async () => {
       let filledAnswer = blankAnswer;
       document.querySelectorAll("#user-blank-input").forEach((input: any) => {
-        filledAnswer = filledAnswer.replace("-----", input.value);
+        filledAnswer = filledAnswer.replace("_____", input.value);
         input.value = "";
       });
       const payload: z.infer<typeof checkAnswerSchema> = {
