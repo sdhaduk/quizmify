@@ -2,7 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # Description
 
-I created a web application that allows the user to take an AI generated quiz on any topic they choose, how it works:
+I created a web application that allows the user to take an AI generated quiz on any topic they choose.
+
+How it works:
 1. The user logs in with a Google account
 2. The user fills in a form that allows them to:
     * Choose the topic
