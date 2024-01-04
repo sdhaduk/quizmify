@@ -13,11 +13,11 @@ export function formatTimeDelta(seconds: number) {
   if (hours > 0) {
     parts.push(`${hours}h`);
   }
-  if (secs > 0) {
-    parts.push(`${secs}s`);
-  }
   if (minutes > 0) {
     parts.push(`${minutes}m`);
+  }
+  if (secs > 0) {
+    parts.push(`${secs}s`);
   }
 
   return parts.join(" ");
