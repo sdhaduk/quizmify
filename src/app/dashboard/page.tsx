@@ -1,5 +1,4 @@
 import HistoryCard from "@/components/dashboard/HistoryCard";
-import HotTopicsCard from "@/components/dashboard/HotTopicsCard";
 import QuizMeCard from "@/components/dashboard/QuizMeCard";
 import RecentActivity from "@/components/dashboard/RecentActivity";
 import { getAuthSession } from "@/lib/nextauth";
@@ -30,7 +29,6 @@ const page = async (props: Props) => {
       </div>
 
       <div className="grid gap-4 mt-4 md:grid-cols-2 lg:grid-cols-7">
-        <HotTopicsCard />
         <RecentActivity />
       </div>
     </main>

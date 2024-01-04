@@ -11,7 +11,7 @@ type Props = {};
 
 const RecentActivity = (props: Props) => {
   return (
-    <Card className="col-span-4 lg:col-span-3">
+    <Card className="col-span-7">
       <CardHeader>
         <CardTitle className="text-2xl font-bold">Recent Activity</CardTitle>
         <CardDescription>You have a played a total of 7 games</CardDescription>
