@@ -14,6 +14,7 @@ import { checkAnswerSchema } from "@/schemas/form/quiz";
 import axios from "axios";
 import BlankAnswerInput from "./BlankAnswerInput";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {
   game: Game & { questions: Pick<Question, "id" | "question" | "answer">[] };
@@ -25,6 +26,7 @@ const OpenEnded = ({ game }: Props) => {
   const [now, setNow] = useState<Date>(new Date());
   const [blankAnswer, setBlankAnswer] = useState<string>("");
   const { toast } = useToast();
+  const router = useRouter();
 
   const currentQuestion = useMemo(() => {
     return game.questions[questionIndex];
@@ -33,7 +35,7 @@ const OpenEnded = ({ game }: Props) => {
   const { mutate: checkAnswer, isPending: isChecking } = useMutation({
     mutationFn: async () => {
       let filledAnswer = blankAnswer;
-      document.querySelectorAll("#user-blank-input").forEach((input) => {
+      document.querySelectorAll("#user-blank-input").forEach((input: any) => {
         filledAnswer = filledAnswer.replace("-----", input.value);
         input.value = "";
       });
@@ -88,6 +90,22 @@ const OpenEnded = ({ game }: Props) => {
     };
   }, [hasEnded]);
 
+  if (!currentQuestion) {
+    return (
+      <div className="absolute flex flex-col justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <h1 className="text-xl font-semibold">
+          There was an issue generating the quiz, please click this button and
+          try again!
+        </h1>
+        <div className="flex flex-row justify-center mt-5">
+          <Link href={"/quiz"}>
+            <Button>Return</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (hasEnded) {
     return (
       <div className="absolute flex flex-col justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -121,10 +139,6 @@ const OpenEnded = ({ game }: Props) => {
             {formatTimeDelta(differenceInSeconds(now, game.timeStarted))}
           </div>
         </div>
-        {/* <MCQCounter
-          correctAnswers={correctAnswers}
-          wrongAnswers={wrongAnswers}
-        /> */}
       </div>
       <Card className="w-full mt-4">
         <CardHeader className="flex flex-row items-center">

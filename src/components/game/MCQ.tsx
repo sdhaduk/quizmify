@@ -14,6 +14,7 @@ import { z } from "zod";
 import { useToast } from "../ui/use-toast";
 import Link from "next/link";
 import { cn, formatTimeDelta } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 type Props = {
   game: Game & { questions: Pick<Question, "id" | "options" | "question">[] };
@@ -27,6 +28,7 @@ const MCQ = ({ game }: Props) => {
   const [hasEnded, setHasEnded] = useState<boolean>(false);
   const [now, setNow] = useState<Date>(new Date());
   const { toast } = useToast();
+  const router = useRouter();
 
   const currentQuestion = useMemo(() => {
     return game.questions[questionIndex];
@@ -110,6 +112,22 @@ const MCQ = ({ game }: Props) => {
     };
   }, [hasEnded]);
 
+  if (!currentQuestion) {
+    return (
+      <div className="absolute flex flex-col justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <h1 className="text-xl font-semibold">
+          There was an issue generating the quiz, please click this button and
+          try again!
+        </h1>
+        <div className="flex flex-row justify-center mt-5">
+          <Link href={"/quiz"}>
+            <Button>Return</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (hasEnded) {
     return (
       <div className="absolute flex flex-col justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -157,7 +175,7 @@ const MCQ = ({ game }: Props) => {
             </div>
           </CardTitle>
           <CardDescription className="flex-grow text-lg">
-            {currentQuestion.question}
+            {currentQuestion?.question}
           </CardDescription>
         </CardHeader>
       </Card>
