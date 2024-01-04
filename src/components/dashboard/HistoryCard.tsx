@@ -1,13 +1,15 @@
 "use client";
 
 import { History } from "lucide-react";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 
 type Props = {};
 
 const HistoryCard = (props: Props) => {
+  const router = useRouter();
+
   return (
     <Card
       className="hover:cursor-pointer hover:opacity-75"
