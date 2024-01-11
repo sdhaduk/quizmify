@@ -9,7 +9,7 @@ import HistoryComponent from "@/components/dashboard/HistoryComponent";
 
 type Props = {};
 
-const page = async (props: Props) => {
+const Page = async (props: Props) => {
   const session = await getAuthSession();
   if (!session?.user) {
     return redirect("/");
@@ -34,4 +34,4 @@ const page = async (props: Props) => {
   );
 };
 
-export default page;
+export default Page;

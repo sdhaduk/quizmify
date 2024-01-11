@@ -13,7 +13,7 @@ export const metadata = {
   title: "Dashboard | Quizmify",
 };
 
-const page = async (props: Props) => {
+const Page = async (props: Props) => {
   const session = await getAuthSession();
   if (!session?.user) {
     redirect("/");
@@ -48,4 +48,4 @@ const page = async (props: Props) => {
   );
 };
 
-export default page;
+export default Page;
